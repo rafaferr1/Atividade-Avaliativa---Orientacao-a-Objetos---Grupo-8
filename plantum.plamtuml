@@ -1,0 +1,48 @@
+@startuml
+class Pessoa {
+    - nome: str
+    - idade: int
+    - cpf: int
+    - endereço: str 
+}
+
+class Cliente {
+    - email: str
+    - telefone: str
+    - pessoa: Pessoa
+    - ingressos_comprados: List[Ingresso]
+    + comprar_ingresso(ingresso: Ingresso)
+}
+
+class Ingresso {
+    - sessao: Sessao
+    - cleinte: Cliente
+    - sala Sala
+    - filme: str
+    - horario: str
+    - preco: float
+    - disponivel: bool
+}
+
+class Sala {
+    - sessao: Sala
+    - numero: int
+    - capacidade: int
+    - ingressos_vendidos: List[Ingresso]
+    + vender_ingresso(ingresso: Ingresso): bool
+}
+
+class Sessao {
+    - filme: str
+    - horario: str
+    - sala: Sala
+    - ingressos_vendidos: List[Ingresso]
+    + vender_ingresso(ingresso: Ingresso): bool
+}
+
+Pessoa <|-- Cliente
+Sala --> Ingresso
+Sessao --> Sala
+Sessao --> Ingresso
+Cliente --> Ingresso
+@enduml

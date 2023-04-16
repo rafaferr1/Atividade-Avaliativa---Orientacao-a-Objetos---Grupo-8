@@ -7,11 +7,9 @@ class Cliente(Pessoa):
         self.telefone = telefone
         self.ingressos_comprados = []
 
-    def comprar_ingresso(self, sessao, quantidade):
-        if sessao.ingressos_disponiveis >= quantidade:
-            ingresso = Ingresso(sessao, self, quantidade)
-            self.ingressos_comprados.append(ingresso)
-            sessao.ingressos_disponiveis -= quantidade
-            return ingresso
-        else:
-            return None
+    def comprar_ingresso(self, ingresso):
+        self.ingressos_comprados.append(ingresso)
+        print("Ingresso vendido para o cliente", self.nome)
+
+    def mostrar_ingresso(self):
+        return self.filme.titulo, self.filme.duracao, self.filme.genero, self.horario, self.preco

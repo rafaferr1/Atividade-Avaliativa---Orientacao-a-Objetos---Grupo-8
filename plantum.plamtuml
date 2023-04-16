@@ -16,7 +16,6 @@ class Cliente {
 
 class Ingresso {
     - sessao: Sessao
-    - cleinte: Cliente
     - sala Sala
     - filme: str
     - horario: str
@@ -24,6 +23,13 @@ class Ingresso {
     - disponivel: bool
 }
 
+class Filme {
+    - filme: string
+    - horario: string
+    - preco: float
+    - ingressos_vendidos: List[Ingresso]
+
+}
 class Sala {
     - sessao: Sala
     - numero: int
@@ -34,7 +40,6 @@ class Sala {
 
 class Sessao {
     - filme: str
-    - horario: str
     - sala: Sala
     - ingressos_vendidos: List[Ingresso]
     + vender_ingresso(ingresso: Ingresso): bool
@@ -44,5 +49,6 @@ Pessoa <|-- Cliente
 Sala --> Ingresso
 Sessao --> Sala
 Sessao --> Ingresso
+Filme --> Sessao
 Cliente --> Ingresso
 @enduml
